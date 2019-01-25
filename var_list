@@ -1,0 +1,83 @@
+export THREAD=`cat /proc/cpuinfo |grep processor |wc -l` 
+                              #获取cpu核心数，影响make编译时用几个核心进行编译。
+export MEM=`free -m | grep Mem | awk '{print  $2}'`
+                              #获取内存值，个别配置需要根据内存进行优化
+export HOST_IP=`ip a|grep inet|grep -v inet6|grep -v 127.0.0.1|awk '{print $2}'|awk -F/ '{print $1}'` 
+                              #通过ip a获取本机IP，若获取不成功，则改为固定值。
+#global variable
+export INSTALL_DIR=`pwd`      #安装包路径，若在非文件夹下执行install，则需改为固定值
+export MON_HOME=/data/monitor #监控程序安装路径
+export PLAT_HOME=/home/plat   #平台程序安装路径
+export BAK_HOME=/data/bakup   #备份目录
+export PLAT_USER=plat         #平台系统用户
+export ANS_IP=192.168.1.215   #ansible服务器地址
+export ZBX_IP=192.168.1.211   #ZBX_SERVER服务器地址
+export ELK_IP=192.168.1.214   #logstash日志分析服务器地址
+#mysql
+export MYSQL_PORT=33066       #mysql数据库端口
+export MYSQL_USER=${PLAT_USER}
+                              #mysql系统用户
+export MYSQL_PASSWD=123456    #mysql数据库root用户密码
+export PLAT_DB_USER=connuser  #平台mysql数据库用户
+export PLAT_DB_PASSWD=
+                              #平台mysql数据库密码
+#nginx
+export NGX_PORT=80            #nginx默认web端口
+export NGX_USER=${PLAT_USER}  #nginx用户
+#zabbix
+export ZBX_SERVER_PORT=10051  #zabbix_server服务端口
+export ZBX_AGENT_PORT=10050   #zabbix_agent服务端口
+export ZBX_USER=zabbix        #zabbix系统内用户
+export ZBX_DB=zabbix          #zabbix数据库名
+export ZBX_DB_USER=zabbix     #zabbix数据库用户名
+export ZBX_DB_PASSWD=zabbix   #zabbix数据库密码
+#tomcat(dscore)
+export TOM_PORT=8080          #tomcat对外服务端口
+export TOM_JMX_PORT=10000     #tomcat-jmx端口
+#kafka
+export KAFKA_PORT=9092        #kafka服务端口
+export KAFKA_JMX_PORT=9999    #kafka-jmx端口
+#zookeeper
+export ZOO_PORT=2181          #zookeeper端口
+export ZOO_REG_PORT=2888:3888 #zookeeper选举通信端口
+export ZOO_JMX_PORT=9998      #zookeeper-jmx端口
+#redis
+export REDIS_PORT=6379        #redis服务端口
+export REDIS_PASSWD=        
+                              #redis密码
+#filebeat(log收集)
+export ELA_USER=elastic       #filebeat系统用户
+export LOGS_PORT=5044         #logstash端口
+#squid
+export SQ_USER=${PLAT_USER}   #squid系统用户
+export SQ_PORT=8092           #squid服务端口
+#samba
+export SMB_USER=${PLAT_USER}  #samba系统用户,samba操作共享目录用户
+export SMB_PORT=445           #samba服务端口
+export SMB_DIR=${PLAT_HOME}/share_path
+                              #samba共享目录
+export SMB_IP=192.168.1.220   #samba共享文件所在服务器，一般为该集群的入口服务器IP                              
+export SMB_PWD=   #samba操作共享目录用户的密码
+export SMB_WORK=${PLAT_USER}
+#node
+export NODE_UI_PORT=8011      #node-ui服务端口，nginx会将请求pass到这个端口
+#grafana
+export GRA_USER=grafana       #grafana用户
+export GRA_PORT=3000          #grafana服务端口
+#elastic
+export ELA_USER=elastic       #elastic用户
+#elasticsearch
+export ELS_PORT=9200          #elasticsearch集群端口
+export ELS_NAME=els.test      #elasticsearch集群名
+export ELS_NODE_PORT=9201     #elasticsearch节点集群端口
+export ELS_NODE_NAME=els.test.01
+                              #elasticsearch集群节点名,不同节点部署时需单独定义
+export ELS_TRA_PORT=9300      #elasticsearch集群通讯端口
+export ELS_NODE=3             #elasticsearch最小集群节点数，值为实际节点数/2+1
+export ELS_NODE_HOST=\[\"172.16.140.226\",\"172.16.140.228\",\"172.16.140.230\",\"172.16.140.232\",\"172.16.140.235\"\]
+#export ELS_NODE_HOST=\[\"192.168.1.211\",\"192.168.1.212\",\"192.168.1.213\",\"192.168.1.214\",\"192.168.1.215\"\]
+                              #elasticsearch集群的节点IP集合
+#logstash
+export LOGS_PORT=5044         #logstash集群端口
+#kibana
+export KIBA_PORT=5601         #kibana集群端口
