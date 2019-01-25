@@ -1,0 +1,28 @@
+#!/bin/bash
+
+ELS_PATH=
+ELS_USER=
+JDK_PATH=
+
+elasticsearch_start(){
+	su ${ELS_USER} -m -c "export JAVA_HOME=${JDK_PATH};\
+                             ${ELS_PATH}/bin/elasticsearch -d"
+}
+elasticsearch_stop(){
+        PID=`ps -ef | grep elasticsearch | grep -v grep | awk '{print $2}'` 
+        kill -9 $PID $>/dev/null
+}
+
+case "$1" in
+	start)
+		elasticsearch_start     
+	;;  
+	stop)
+		elasticsearch_stop
+	;;  
+	restart)
+		elasticsearch_stop
+		sleep 5
+		elasticsearch_start
+	;;    
+esac

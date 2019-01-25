@@ -1,0 +1,28 @@
+#! /usr/bin/env bash
+
+KIBA_PATH=
+ELS_USER=
+KIBA_LOG_DIR=${KIBA_PATH}/log
+KIBA_LOG=${KIBA_LOG_DIR}/kibana.log
+
+kibana_start(){
+	su ${ELS_USER} -m -c "${KIBA_PATH}/bin/kibana -l ${KIBA_LOG} &"
+}
+kibana_stop(){
+	PID=`cat ${KIBA_PATH}/kibana.pid` 
+	kill -9 ${PID} $>/dev/null
+}
+
+case "$1" in
+	start)
+		kibana_start	
+    ;;
+	stop)
+		kibana_stop
+    ;;
+	restart)
+		kibana_start
+		sleep 3
+		kibana_stop
+    ;;
+esac

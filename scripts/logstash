@@ -1,0 +1,29 @@
+#!/bin/bash
+
+LOGS_PATH=
+ELS_USER=
+JDK_PATH=
+
+logstash_start(){
+	su ${ELS_USER} -m -c "export JAVA_HOME=${JDK_PATH};\
+                             ${LOGS_PATH}/bin/logstash -f ${LOGS_PATH}/config/logstash.conf"
+}
+logstash_stop(){
+        PID=`ps -ef | grep logstash | grep -v grep | awk '{print $2}'` 
+        kill -9 $PID $>/dev/null
+}
+
+case "$1" in
+	start)
+		logstash_start     
+	;;  
+	stop)
+		logstash_stop
+	;;  
+	restart)
+		logstash_stop
+		sleep 5
+		logstash_start
+	;;    
+esac
+
