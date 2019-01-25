@@ -1,4 +1,2 @@
 # senyint.plat.install
-just for my company
-there is no public network only in lan
-chinese stdout log information
+一键部署公司平台项目的所有内容，不能使用yum连接公共源，本地也没自建源，软件包需要放入本地文件夹。
