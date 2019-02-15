@@ -1,6 +1,7 @@
+
 *.rpm
 *.gz
 *.tgz
-*.py.j2
+*.py
 *.xz
-
+*.bz2

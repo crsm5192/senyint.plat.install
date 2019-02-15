@@ -19,7 +19,7 @@ export MYSQL_USER=${PLAT_USER}
                               #mysql系统用户
 export MYSQL_PASSWD=123456    #mysql数据库root用户密码
 export PLAT_DB_USER=connuser  #平台mysql数据库用户
-export PLAT_DB_PASSWD=
+export PLAT_DB_PASSWD=dalianzhirong321_A
                               #平台mysql数据库密码
 #nginx
 export NGX_PORT=80            #nginx默认web端口
@@ -43,7 +43,7 @@ export ZOO_REG_PORT=2888:3888 #zookeeper选举通信端口
 export ZOO_JMX_PORT=9998      #zookeeper-jmx端口
 #redis
 export REDIS_PORT=6379        #redis服务端口
-export REDIS_PASSWD=        
+export REDIS_PASSWD=deaN9mizr_ZRzy1        
                               #redis密码
 #filebeat(log收集)
 export ELA_USER=elastic       #filebeat系统用户
@@ -57,7 +57,7 @@ export SMB_PORT=445           #samba服务端口
 export SMB_DIR=${PLAT_HOME}/share_path
                               #samba共享目录
 export SMB_IP=192.168.1.220   #samba共享文件所在服务器，一般为该集群的入口服务器IP                              
-export SMB_PWD=   #samba操作共享目录用户的密码
+export SMB_PWD=P7qVZiha24fL%@qL   #samba操作共享目录用户的密码
 export SMB_WORK=${PLAT_USER}
 #node
 export NODE_UI_PORT=8011      #node-ui服务端口，nginx会将请求pass到这个端口
